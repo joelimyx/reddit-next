@@ -6,11 +6,11 @@ import './App.css';
 function App() {
   getPosts('buildapcsales');
   const posts = useSelector(selectPosts);
-  console.log(posts);
+  console.log(posts[0]);
   return (
     <div className="App">
       <header className="App-header">
-        <p>hello</p>
+        <p>{posts[0]}</p>
       </header>
     </div>
   );

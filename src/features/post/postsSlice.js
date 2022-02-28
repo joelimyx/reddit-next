@@ -7,8 +7,9 @@ const postsSlice = createSlice({
         addPost:(state,action) =>{
             const {id, title, link_flair_text} = action.payload;
             state.posts[id] = {
-                title:title,
-                link_flair_text:link_flair_text,
+              id:id,
+              title:title,
+              link_flair_text:link_flair_text,
             }
             
         }
@@ -16,7 +17,7 @@ const postsSlice = createSlice({
 });
 export const getPosts = async(subreddit) => {
     try{
-      const response = await fetch(`https://www.reddit.com/r/all.json`);
+      const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
       if(response.ok) {
         const jsonResponse = await response.json();
         const posts = jsonResponse.data.children;
